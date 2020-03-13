@@ -52,6 +52,7 @@ namespace GIP_TISO_DOMAIN.Business
         }
         public Gebruiker(string Name, string Email, int Age, string Sex, string Password)
         {
+            _id = 0;
             _name = Name;
             _email = Email;
             _age = Age;

@@ -57,7 +57,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = "INSERT INTO mydb.cadeau(Naam, Omschrijving, Website, GekochtJaOfNee) VALUES(@name, @omsc, @web, @geko)";
+            string opdracht = "INSERT INTO gipsql.cadeau(Naam, Omschrijving, Website, GekochtJaOfNee) VALUES(@name, @omsc, @web, @geko)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
@@ -82,16 +82,17 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
+            string opdracht = "delete from gipsql.cadeau where (id=@idparameter)";
 
-            string opdracht = ("delete from gipsql.cadeau where (id=@idparameter)");
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
+            //voeg de waarden toe, je haalt ze uit het object eval
             cmd.Parameters.AddWithValue("idparameter", id);
 
             conn.Open();
             cmd.ExecuteNonQuery();
-
             conn.Close();
-        }
+        
+    }
         public void changeCadeauInDB(Cadeau cadeau, int id)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);

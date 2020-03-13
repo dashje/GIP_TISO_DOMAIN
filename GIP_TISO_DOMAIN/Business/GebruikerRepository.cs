@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GIP_TISO_DOMAIN.Business
 {
-    class GebruikerRepository
+    static class GebruikerRepository
     {
         private static List<Gebruiker> _gebruikers = new List<Gebruiker>();
         public static List<Gebruiker> Gebruikers
@@ -17,6 +17,16 @@ namespace GIP_TISO_DOMAIN.Business
         public static void addGebruikers(Gebruiker item)
         {
             _gebruikers.Add(item);
+        }
+
+        public static Gebruiker getLogin (string Name,string Password)
+        {
+            foreach (Gebruiker gebruiker in _gebruikers)
+            {
+                if (gebruiker.Name == Name && gebruiker.Password == Password)
+                { return gebruiker; }
+            }
+            return null;
         }
     }
 }

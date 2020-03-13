@@ -36,11 +36,12 @@ namespace GIP_TISO_DOMAIN.Persistence
             while (dataReader.Read())
             {
                 Gebruiker item = new Gebruiker(
-                dataReader[0].ToString(),
+                Convert.ToInt16(dataReader[0]),
                 dataReader[1].ToString(),
-                Convert.ToInt16(dataReader[2]),
-                dataReader[3].ToString(),
-                dataReader[4].ToString()
+                dataReader[2].ToString(),
+                Convert.ToInt16(dataReader[3]),
+                dataReader[4].ToString(),
+                dataReader[5].ToString()
                 );
                 itemLijst.Add(item);
             }
@@ -56,7 +57,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = "INSERT INTO mydb.gebruiker(Naam, Email, Leeftijd, Geslacht, Passwoord) VALUES(@name, @email, @age, @sex, @passw)";
+            string opdracht = "INSERT INTO gipsql.gebruiker(Naam, Email, Leeftijd, Geslacht, Passwoord) VALUES(@name, @email, @age, @sex, @passw)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 

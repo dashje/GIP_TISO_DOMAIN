@@ -12,7 +12,7 @@ namespace GIP_TISO_DOMAIN.Persistence
     {
         private string _connectionstring;
         public Controller()
-        { _connectionstring = "server = localhost; user id = root;password=1234; database=2020_02_11_toets"; }
+        { _connectionstring = "server = localhost; user id = root;password=1234; database=gipsql"; }
         public Controller(string connectionstring)
         { _connectionstring = connectionstring; }
 
@@ -56,6 +56,12 @@ namespace GIP_TISO_DOMAIN.Persistence
         {
             WishlistMapper mapper = new WishlistMapper(_connectionstring);
             mapper.changeWishlistInDB(item,IDCadeau);
+        }
+        public void removeCadeau(int id)
+        {
+            CadeauMapper mapper = new CadeauMapper(_connectionstring);
+            mapper.deleteCadeauInDB(id);
+
         }
     }
 }

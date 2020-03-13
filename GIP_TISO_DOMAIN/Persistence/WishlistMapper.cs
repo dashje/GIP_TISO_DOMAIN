@@ -36,8 +36,8 @@ namespace GIP_TISO_DOMAIN.Persistence
             while (dataReader.Read())
             {
                 Wishlist item = new Wishlist(
-                Convert.ToInt16(dataReader[0]),
-                Convert.ToInt16(dataReader[1])
+                Convert.ToInt16(dataReader[2]),
+                Convert.ToInt16(dataReader[3])
                 );
                 itemLijst.Add(item);
             }
@@ -107,4 +107,4 @@ namespace GIP_TISO_DOMAIN.Persistence
         }
     }
 }
-}
+

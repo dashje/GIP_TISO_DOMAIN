@@ -46,10 +46,16 @@ namespace GIP_TISO_DOMAIN.Business
         }
         public Cadeau(string Name,string Description,string Website,string Status)
         {
+            _id = 0;
             _name = Name;
             _description = Description;
             _website = Website;
             _status = Status;
+        }
+
+        public override string ToString()
+        {
+            return _id + " - " + _name.ToString() + " : " + _status.ToString();
         }
 
     }

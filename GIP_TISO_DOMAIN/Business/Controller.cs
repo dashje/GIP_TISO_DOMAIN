@@ -46,5 +46,14 @@ namespace GIP_TISO_DOMAIN.Business
             _persistController.addWishlistsToDB(item);
             WishlistRepository.addWishlists(item);
         }
+        public Gebruiker getLogin (string Name,string Password)
+        {
+            return GebruikerRepository.getLogin(Name, Password);
+        }
+        public void deleteCadeauToDB(int ID)
+        {
+            _persistController.removeCadeau(ID);
+            CadeauRepository.Cadeaus = _persistController.getCadeausFromDB();
+        }
     }
 }

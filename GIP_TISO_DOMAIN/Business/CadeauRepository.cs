@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GIP_TISO_DOMAIN.Business
 {
-    class CadeauRepository
+    static class CadeauRepository
     {
         private static List<Cadeau> _cadeaus = new List<Cadeau>();
         public static List<Cadeau> Cadeaus
