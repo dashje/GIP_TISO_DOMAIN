@@ -12,7 +12,7 @@ namespace GIP_TISO_DOMAIN.Persistence
     {
         private string _connectionstring;
         public Controller()
-        { _connectionstring = "server = localhost; user id = root;password=1234; database=gipsql"; }
+        { _connectionstring = "server = localhost; user id = root;password=1234; database=gip_de_Decker_pieter-jan"; }
         public Controller(string connectionstring)
         { _connectionstring = connectionstring; }
 

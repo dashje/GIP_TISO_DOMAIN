@@ -21,7 +21,7 @@ namespace GIP_TISO_ASP
         private void fillControls()
         {
             lbxCadeau.DataSource = _controller.getCadeausFromDB();
-            
+            lbxCadeau.DataBind();
         }
     }
 }

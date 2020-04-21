@@ -15,7 +15,7 @@ namespace GIP_TISO_DOMAIN.Persistence
         public WishlistMapper()
         {
             _connectionString =
-               "server=localhost;user id=root;password=1234;database=gipsql";
+               "server=localhost;user id=root;password=1234;database=gip_de_Decker_pieter-jan";
         }
         public WishlistMapper(string connectionstring)
         {
@@ -26,7 +26,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = "SELECT * FROM gipsql.wishlist";
+            string opdracht = "SELECT * FROM gip_de_Decker_pieter-jan.lijst";
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
             List<Wishlist> itemLijst = new List<Wishlist>();
@@ -53,7 +53,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = "INSERT INTO gipsql.wishlist(Code, FK_idGebruiker, FK_idCadeau) VALUES(@code, @fkidG, @fkidC)";
+            string opdracht = "INSERT INTO gip_de_Decker_pieter-jan.lijst(Code, FK_idGebruiker, FK_idCadeau) VALUES(@code, @fkidG, @fkidC)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 

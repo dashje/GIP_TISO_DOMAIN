@@ -15,7 +15,7 @@ namespace GIP_TISO_DOMAIN.Persistence
         public GebruikerMapper()
         {
             _connectionString =
-               "server=localhost;user id=root;password=1234;database=gipsql";
+               "server=localhost;user id=root;password=1234;database=gip_de_Decker_pieter-jan";
         }
         public GebruikerMapper(string connectionstring)
         {
@@ -26,7 +26,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = "SELECT * FROM gipsql.gebruiker";
+            string opdracht = "SELECT * FROM gip_de_Decker_pieter-jan.gebruiker";
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
             List<Gebruiker> itemLijst = new List<Gebruiker>();
@@ -57,7 +57,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = "INSERT INTO gipsql.gebruiker(Naam, Email, Leeftijd, Geslacht, Passwoord) VALUES(@name, @email, @age, @sex, @passw)";
+            string opdracht = "INSERT INTO gip_de_Decker_pieter-jan.gebruiker(Naam, Email, Leeftijd, Geslacht, Passwoord) VALUES(@name, @email, @age, @sex, @passw)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
@@ -85,7 +85,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = ("delete from gipsql.gebruiker where (id=@idparameter)");
+            string opdracht = ("delete from gip_de_Decker_pieter-jan.gebruiker where (id=@idparameter)");
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
             cmd.Parameters.AddWithValue("idparameter", id);
 
@@ -100,7 +100,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = ("UPDATE gipsql.gebruiker SET Naam = @name, Email = @email, Leeftijd = @age, Geslacht = @sex, Passwoord = @passw WHERE (id = @idparameter);");
+            string opdracht = ("UPDATE gip_de_Decker_pieter-jan.gebruiker SET Naam = @name, Email = @email, Leeftijd = @age, Geslacht = @sex, Passwoord = @passw WHERE (id = @idparameter);");
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
             cmd.Parameters.AddWithValue("name", gebruiker.Name);
 
