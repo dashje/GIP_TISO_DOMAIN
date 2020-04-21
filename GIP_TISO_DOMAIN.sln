@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP_TISO_DOMAIN", "GIP_TISO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP_TISO_WPF", "GIP_TISO_WPF\GIP_TISO_WPF.csproj", "{36CB9858-705C-41C3-B11C-B906AECF920D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP_TISO_ASP", "GIP_TISO_ASP\GIP_TISO_ASP.csproj", "{9FE02226-BEC8-4D93-95F5-551DC5B6D40E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{36CB9858-705C-41C3-B11C-B906AECF920D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36CB9858-705C-41C3-B11C-B906AECF920D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36CB9858-705C-41C3-B11C-B906AECF920D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE02226-BEC8-4D93-95F5-551DC5B6D40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE02226-BEC8-4D93-95F5-551DC5B6D40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE02226-BEC8-4D93-95F5-551DC5B6D40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE02226-BEC8-4D93-95F5-551DC5B6D40E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
