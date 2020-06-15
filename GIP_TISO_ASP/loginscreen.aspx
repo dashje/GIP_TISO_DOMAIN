@@ -4,9 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Create a Wishlist<br />
     <br />
-    <asp:Button ID="btnCreateWishlist" runat="server" Text="Button" OnClick="btnCreateWishlist_Click" />
-    <br />
-    <br />
+    <asp:Button ID="btnCreateWishlist" runat="server" Text="Create" OnClick="btnCreateWishlist_Click" />
     <br />
     Invite code<br />
     <br />

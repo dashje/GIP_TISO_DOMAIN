@@ -13,12 +13,17 @@
     <br />
     <asp:TextBox ID="txtWebsite" runat="server" Text="Website"></asp:TextBox>
     <br />
-    <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-        <asp:ListItem Value="JA">Bought</asp:ListItem>
-        <asp:ListItem Value="NEE">Not Bought</asp:ListItem>
-    </asp:RadioButtonList>
-    <asp:Button ID="btnAdd" runat="server" Text="Add" />
+    <asp:TextBox ID="txtNameList" runat="server" Text="Name List"></asp:TextBox>
     <br />
-    <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+
+    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
     <br />
+    <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <asp:Label ID="lblCode" runat="server" Text=""></asp:Label>
+    <br />
+
 </asp:Content>

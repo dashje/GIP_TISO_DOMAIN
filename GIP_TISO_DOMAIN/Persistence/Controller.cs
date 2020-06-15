@@ -12,7 +12,7 @@ namespace GIP_TISO_DOMAIN.Persistence
     {
         private string _connectionstring;
         public Controller()
-        { _connectionstring = "server = localhost; user id = root;password=1234; database=gip_de_Decker_pieter-jan"; }
+        { _connectionstring = "server = localhost; user id = root;password=1234; database=wishlist"; }
         public Controller(string connectionstring)
         { _connectionstring = connectionstring; }
 
@@ -37,25 +37,15 @@ namespace GIP_TISO_DOMAIN.Persistence
             GebruikerMapper mapper = new GebruikerMapper(_connectionstring);
             mapper.addGebruikersToDB(item);
         }
-        public List<Wishlist> getWishlistsFromDB()
+        public List<Lijst> getWishlistsFromDB()
         {
-            WishlistMapper mapper = new WishlistMapper(_connectionstring);
-            return mapper.getWishlistsFromDB();
+            LijstMapper mapper = new LijstMapper(_connectionstring);
+            return mapper.getListsFromDB();
         }
-        public void addWishlistsToDB(Wishlist item)
+        public void addWishlistsToDB(Lijst item)
         {
-            WishlistMapper mapper = new WishlistMapper(_connectionstring);
-            mapper.addWishlistToDB(item);
-        }
-        public void deleteWishlistsFromDB(int IDWishlist)
-        {
-            WishlistMapper mapper = new WishlistMapper(_connectionstring);
-            mapper.deleteWishlistInDB(IDWishlist);
-        }
-        public void changeWishlistFromDB(Wishlist item,int IDCadeau)
-        {
-            WishlistMapper mapper = new WishlistMapper(_connectionstring);
-            mapper.changeWishlistInDB(item,IDCadeau);
+            LijstMapper mapper = new LijstMapper(_connectionstring);
+            mapper.addLijstToDB(item);
         }
         public void removeCadeau(int id)
         {
@@ -63,5 +53,36 @@ namespace GIP_TISO_DOMAIN.Persistence
             mapper.deleteCadeauInDB(id);
 
         }
+        public List<LijstHasCadeau> getLHCFromWishlist(int FK_Lijst)
+        {
+            LHCMapper mapper = new LHCMapper(_connectionstring);
+            return mapper.getLHCFromWishlist(FK_Lijst);
+        }
+        public List<Cadeau> getLHCFromCode(int indexLijst)
+        {
+            LHCMapper mapper = new LHCMapper(_connectionstring);
+            return mapper.getLHCFromCode(indexLijst);
+        }
+        public List<Lijst> getLHCFromGebruiker(int indexGebruiker)
+        {
+            LijstMapper mapper = new LijstMapper(_connectionstring);
+            return mapper.getLijstFromDB(indexGebruiker);
+        }
+        public List<LijstHasCadeau> getLHCFromID(int indexID)
+        {
+            LijstMapper mapper = new LijstMapper(_connectionstring);
+            return mapper.getLHCFromID(indexID);
+        }
+        public void removeLHCFromWishlist(LijstHasCadeau item)
+        {
+            LHCMapper mapper = new LHCMapper(_connectionstring);
+            mapper.deleteLHCFromDB(item);
+        }
+        public void addLHCToDB(LijstHasCadeau lhc)
+        {
+            LHCMapper mapper = new LHCMapper(_connectionstring);
+            mapper.AddLHCToDB(lhc);
+        }
+       
     }
 }

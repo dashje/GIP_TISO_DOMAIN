@@ -50,12 +50,15 @@
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Gebruiker.cs" />
     <Compile Include="Business\GebruikerRepository.cs" />
-    <Compile Include="Business\Wishlist.cs" />
-    <Compile Include="Business\WishlistRepository.cs" />
+    <Compile Include="Business\LHCRepository.cs" />
+    <Compile Include="Business\Lijst.cs" />
+    <Compile Include="Business\LijstHasCadeau.cs" />
+    <Compile Include="Business\LijstRepository.cs" />
     <Compile Include="Persistence\CadeauMapper.cs" />
     <Compile Include="Persistence\Controller.cs" />
     <Compile Include="Persistence\GebruikerMapper.cs" />
-    <Compile Include="Persistence\WishlistMapper.cs" />
+    <Compile Include="Persistence\LHCMapper.cs" />
+    <Compile Include="Persistence\LijstMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -15,7 +15,7 @@ namespace GIP_TISO_DOMAIN.Persistence
         public CadeauMapper()
         {
             _connectionString =
-               "server=localhost;user id=root;password=1234;database=gip_de_Decker_pieter-Jan";
+               "server=localhost;user id=root;password=1234;database=wishlist";
         }
         public CadeauMapper(string connectionstring)
         {
@@ -26,7 +26,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = "SELECT * FROM gip_de_Decker_pieter-jan.cadeau";
+            string opdracht = "SELECT * FROM wishlist.cadeau";
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
             List<Cadeau> itemLijst = new List<Cadeau>();
@@ -39,8 +39,7 @@ namespace GIP_TISO_DOMAIN.Persistence
                 Convert.ToInt16(dataReader[0]),
                 dataReader[1].ToString(),
                 dataReader[2].ToString(),
-                dataReader[3].ToString(),
-                dataReader[4].ToString()
+                dataReader[3].ToString()
                 );
                 itemLijst.Add(item);
             }
@@ -57,7 +56,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = "INSERT INTO gip_de_Decker_pieter-jan.cadeau(Naam, Omschrijving, Website, GekochtJaOfNee) VALUES(@name, @omsc, @web, @geko)";
+            string opdracht = "INSERT INTO wishlist.cadeau(Naam, Omschrijving, Website) VALUES(@name, @omsc, @web)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
 
@@ -68,8 +67,6 @@ namespace GIP_TISO_DOMAIN.Persistence
             cmd.Parameters.AddWithValue("omsc", cadeau.Description);
 
             cmd.Parameters.AddWithValue("web", cadeau.Website);
-
-            cmd.Parameters.AddWithValue("geko", cadeau.Status);
 
             conn.Open();
 
@@ -82,7 +79,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = "delete from gip_de_Decker_pieter-jan.cadeau where (id=@idparameter)";
+            string opdracht = "delete from wishlist.cadeau where (id=@idparameter)";
 
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
             //voeg de waarden toe, je haalt ze uit het object eval
@@ -99,7 +96,7 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             //Het SQL-commando definiëren
 
-            string opdracht = ("UPDATE gip_de_Decker_pieter-jan.cadeau SET Naam = @name, Omschrijving = @omsc, Website = @web, GekochtJaOfNee= @geko WHERE (id = @idparameter);");
+            string opdracht = ("UPDATE wishlist.cadeau SET Naam = @name, Omschrijving = @omsc, Website = @web, GekochtJaOfNee= @geko WHERE (id = @idparameter);");
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
             cmd.Parameters.AddWithValue("name", cadeau.Name);
 
@@ -107,13 +104,39 @@ namespace GIP_TISO_DOMAIN.Persistence
 
             cmd.Parameters.AddWithValue("web", cadeau.Website);
 
-            cmd.Parameters.AddWithValue("geko", cadeau.Status);
             cmd.Parameters.AddWithValue("idparameter", id);
 
             conn.Open();
             cmd.ExecuteNonQuery();
 
             conn.Close();
+        }
+        public List<Cadeau> getLHCFromGebruiker(int indexGebruiker)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            //Het SQL-commando definiëren
+            string opdracht = " SELECT cadeau.* FROM wishlist.cadeau inner join lijst_has_cadeau on FK_cadeau = id_Cadeau where FK_Lijst = @indxL;";
+            MySqlCommand cmd = new MySqlCommand(opdracht, conn);
+            cmd.Parameters.AddWithValue("indxL", indexGebruiker);
+
+            List<Cadeau> itemLijst = new List<Cadeau>();
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                Cadeau item = new Cadeau(
+                Convert.ToInt16(dataReader[0]),
+                dataReader[1].ToString(),
+                dataReader[2].ToString(),
+                dataReader[3].ToString()
+
+                );
+                itemLijst.Add(item);
+            }
+            conn.Close();
+            return itemLijst;
         }
     }
 }

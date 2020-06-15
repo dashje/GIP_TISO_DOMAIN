@@ -38,24 +38,16 @@ namespace GIP_TISO_WPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string gekochtjaofnee = "";
-            if (rbnJa.IsChecked == true)
-            {
-                gekochtjaofnee = "JA";
-            }
-            else if (rbnNee.IsChecked == true)
-            {
-                gekochtjaofnee = "NEE";
-            }
 
-            Cadeau cadeau = new Cadeau(txtnaam.Text, txtomschrijving.Text, txtwebsite.Text,gekochtjaofnee );
+
+            Cadeau cadeau = new Cadeau(txtnaam.Text, txtomschrijving.Text, txtwebsite.Text);
             _controller.addCadeausToDB(cadeau);
             fillControls();
         }
 
         private void TxtVerwijderen_Click(object sender, RoutedEventArgs e)
         {
-            _controller.deleteCadeauToDB(lbxCadeau.SelectedIndex);
+            _controller.removeCadeauFromWishlist(lbxCadeau.SelectedIndex);
             fillControls();
         }
     }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GIP_TISO_ASP.home" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -8,7 +9,7 @@
     <br />
     <asp:TextBox ID="txtpaswoord" runat="server"></asp:TextBox>
     <br />
-    <br />
+    <br /> 
     <asp:Button ID="btnLogin" runat="server" Text="Button" OnClick="btnLogin_Click" />
     <br />
     <br />

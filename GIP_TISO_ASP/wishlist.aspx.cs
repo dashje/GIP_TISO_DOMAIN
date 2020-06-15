@@ -15,6 +15,9 @@ namespace GIP_TISO_ASP
         protected void Page_Load(object sender, EventArgs e)
         {
             _controller = new Controller();
+            Random r = new Random();
+            int num = r.Next(1,9999);
+            lblCode.Text = num.ToString();
             fillControls();
         }
 
@@ -22,6 +25,19 @@ namespace GIP_TISO_ASP
         {
             lbxCadeau.DataSource = _controller.getCadeausFromDB();
             lbxCadeau.DataBind();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Cadeau cadeau = new Cadeau(txtName.Text, txtDescription.Text, txtWebsite.Text);
+            _controller.addCadeausToDB(cadeau);
+            fillControls();
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            _controller.deleteCadeauToDB(lbxCadeau.SelectedIndex);
+            fillControls();
         }
     }
 }
