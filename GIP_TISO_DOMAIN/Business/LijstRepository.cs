@@ -32,15 +32,7 @@ namespace GIP_TISO_DOMAIN.Business
             }
             return null;
         }
-        public static Lijst getLijstFromID (int ID)
-        {
-            foreach (Lijst Lijsten in _lijsten)
-            {
-                if (Lijsten.ID == ID)
-                { return Lijsten; }
-            }
-            return null;
-        }
+  
         public static List<Lijst> getLijstFromGebruiker (int Gebruiker)
         {
             List<Lijst> returnLijst = new List<Lijst>();

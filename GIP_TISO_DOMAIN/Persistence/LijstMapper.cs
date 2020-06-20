@@ -99,6 +99,7 @@ namespace GIP_TISO_DOMAIN.Persistence
                 dataReader[2].ToString(),
                 dataReader[3].ToString(),
                 Convert.ToInt16(dataReader[4])
+                
 
                 );
                 itemLijst.Add(item);
@@ -106,25 +107,27 @@ namespace GIP_TISO_DOMAIN.Persistence
             conn.Close();
             return itemLijst;
         }
-        public List<LijstHasCadeau> getLHCFromID(int FK_Lijst)
+        public List<Cadeau> getLHCFromID(int FK_Lijst)
         {
+            //de connectie met de databank maken
+
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = "SELECT * FROM wishlist.lijst_has_cadeau where FK_Lijst = @FK";
-            MySqlCommand cmd = new MySqlCommand(opdracht, conn);
-            cmd.Parameters.AddWithValue("FK", FK_Lijst);
 
-            List<LijstHasCadeau> itemLijst = new List<LijstHasCadeau>();
+            string opdracht = " SELECT cadeau.* FROM wishlist.cadeau inner join lijst_has_cadeau on FK_cadeau = id_Cadeau where FK_Lijst = @indxL;";
+            MySqlCommand cmd = new MySqlCommand(opdracht, conn);
+            cmd.Parameters.AddWithValue("indxL", FK_Lijst);
+            List<Cadeau> itemLijst = new List<Cadeau>();
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
-
             while (dataReader.Read())
             {
-                LijstHasCadeau item = new LijstHasCadeau(
-                Convert.ToInt16(dataReader[0]),
-                Convert.ToInt16(dataReader[1]),
-                dataReader[2].ToString()
+                Cadeau item = new Cadeau(
+                    Convert.ToInt16(dataReader[0]),
+                dataReader[1].ToString(),
+                dataReader[2].ToString(),
+                dataReader[3].ToString()
 
                 );
                 itemLijst.Add(item);
@@ -132,7 +135,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             conn.Close();
             return itemLijst;
         }
+    }
 
 
     }
-}

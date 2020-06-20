@@ -120,7 +120,7 @@ namespace GIP_TISO_DOMAIN.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             //Het SQL-commando definiëren
-            string opdracht = " SELECT cadeau.* FROM wishlist.cadeau inner join lijst_has_cadeau on FK_cadeau = id_Cadeau where FK_Lijst = @indxL;";
+            string opdracht = " SELECT cadeau.*,GekochtJaOfNee FROM wishlist.cadeau inner join lijst_has_cadeau on id_Cadeau = FK_Cadeau where FK_Lijst = @indxL;";
             MySqlCommand cmd = new MySqlCommand(opdracht, conn);
             cmd.Parameters.AddWithValue("indxL", indexLijst);
 
@@ -134,13 +134,25 @@ namespace GIP_TISO_DOMAIN.Persistence
                 Convert.ToInt16(dataReader[0]),
                 dataReader[1].ToString(),
                 dataReader[2].ToString(),
-                dataReader[3].ToString()
+                dataReader[3].ToString(),
+                dataReader[4].ToString()
 
                 );
                 itemLijst.Add(item);
             }
             conn.Close();
             return itemLijst;
+        }
+        public void changeConvert(int id, string status)
+        {
+            MySqlConnection connection = new MySqlConnection(_connectionString);
+            MySqlCommand command = new MySqlCommand("UPDATE wishlist.Lijst_Has_Cadeau SET GekochtJaOfNee = @status WHERE (FK_Lijst = @id);", connection);
+            command.Parameters.AddWithValue("id", id);
+            command.Parameters.AddWithValue("status", status);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
     }
     

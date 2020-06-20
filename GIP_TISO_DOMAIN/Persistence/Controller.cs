@@ -21,6 +21,11 @@ namespace GIP_TISO_DOMAIN.Persistence
             CadeauMapper mapper = new CadeauMapper(_connectionstring);
             return mapper.getCadeausFromDB();
         }
+        public List<LijstHasCadeau> getLHCFromDB()
+        {
+            LHCMapper mapper = new LHCMapper(_connectionstring);
+            return mapper.getLHCFromDB();
+        }
 
         public void addCadeausToDB(Cadeau item)
         {
@@ -68,10 +73,15 @@ namespace GIP_TISO_DOMAIN.Persistence
             LijstMapper mapper = new LijstMapper(_connectionstring);
             return mapper.getLijstFromDB(indexGebruiker);
         }
-        public List<LijstHasCadeau> getLHCFromID(int indexID)
+        public List<Cadeau> getLHCFromID(int indexID)
         {
             LijstMapper mapper = new LijstMapper(_connectionstring);
             return mapper.getLHCFromID(indexID);
+        }
+        public void changeStatus(int id,string Status)
+        {
+            LHCMapper _lhcmapper = new LHCMapper(_connectionstring);
+            _lhcmapper.changeConvert(id, Status);
         }
         public void removeLHCFromWishlist(LijstHasCadeau item)
         {

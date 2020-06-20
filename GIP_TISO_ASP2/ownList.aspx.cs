@@ -43,9 +43,11 @@ namespace GIP_TISO_ASP2
         {
             lbxAllCadeaus.DataSource = _controller.getCadeausFromDB();
             lbxAllCadeaus.DataBind();
-            Lijst item = _controller.getCurrentLijstID();
-            LbxCurrentList.DataSource = _controller.getCadeausFromID();
+            LijstHasCadeau item = _controller.getCurrentLijstID();
+
+            LbxCurrentList.DataSource = _controller.getCadeausFromID(item);
             LbxCurrentList.DataBind();
+            
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace GIP_TISO_ASP2
         protected void BtnCreateList_Click(object sender, EventArgs e)
         {
             btnAdd.Visible = true;
-            BtnCreateList.Visible = false;
+
             Lijst lijst = _controller.CreateList(txtNameList.Text);
             lblCode.Text = lijst.Code;
             //De lijst is nodig maar ik heb hem hier niet nodig.

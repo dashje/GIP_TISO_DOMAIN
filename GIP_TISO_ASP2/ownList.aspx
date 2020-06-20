@@ -4,9 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <div style="text-align:center">
-        <asp:TextBox ID="txtNameList" text="Name of this list" runat="server"></asp:TextBox>
+        <asp:label ID="txtNameList" text="Name of this list" runat="server"></asp:label>
         <br />
-        <asp:Button ID="BtnCreateList" runat="server" Text="Create" BackColor="#1A1A1D" ForeColor="white" BorderColor="ForestGreen" OnClick="BtnCreateList_Click" />
         <br />
 
         <asp:ListBox ID="lbxAllCadeaus" runat="server" Height="193px" Width="380px"></asp:ListBox>

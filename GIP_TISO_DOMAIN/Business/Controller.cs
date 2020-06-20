@@ -12,9 +12,8 @@ namespace GIP_TISO_DOMAIN.Business
         private Persistence.Controller _persistController;
         private Gebruiker _activeGebruiker;
         private Lijst _activeLijst;
-        private Lijst _chosenLijst;
         private Lijst _currentLijst;
-        private Lijst _currentLijstID;
+        private LijstHasCadeau _currentLijstID;
         private Random rnd = new Random();
 
         public Controller()
@@ -23,6 +22,7 @@ namespace GIP_TISO_DOMAIN.Business
             CadeauRepository.Cadeaus = _persistController.getCadeausFromDB();
             GebruikerRepository.Gebruikers = _persistController.getGebruikersFromDB();
             LijstRepository.Lijsten = _persistController.getWishlistsFromDB();
+            LHCRepository.LHCList = _persistController.getLHCFromDB();
             _activeGebruiker = null;
             _activeLijst = null;
             _currentLijst = null;
@@ -73,6 +73,10 @@ namespace GIP_TISO_DOMAIN.Business
 
             return cadeau;
         }
+        public void changeStatus(int id,string status)
+        {
+            _persistController.changeStatus(id, status);
+        }
         public void removeCadeauFromList(int IndexCadeau)
         {
             LijstHasCadeau item = _persistController.getLHCFromWishlist(_activeLijst.ID)[IndexCadeau];
@@ -89,9 +93,9 @@ namespace GIP_TISO_DOMAIN.Business
         {
             return _persistController.getLHCFromGebruiker(_activeGebruiker.ID);
         }
-        public List<LijstHasCadeau> getCadeausFromID()
+        public List<Cadeau> getCadeausFromID(LijstHasCadeau id)
         {
-            return _persistController.getLHCFromID(_currentLijstID.ID);
+            return _persistController.getLHCFromID(_currentLijstID.FK_Lijst);
         }
 
         public int GetCode()
@@ -114,15 +118,15 @@ namespace GIP_TISO_DOMAIN.Business
         {
             return LijstRepository.getLijst(Code);
         }
-        public Lijst getLijstFromID (int ID)
+        public LijstHasCadeau getLijstFromID (int ID)
         {
-            return LijstRepository.getLijstFromID(ID);
+            return LHCRepository.getLijstFromID(ID);
         }
-        public void setCurrentLijstID(Lijst ID)
+        public void setCurrentLijstID(LijstHasCadeau ID)
         {
             _currentLijstID=ID;
         }
-        public Lijst getCurrentLijstID()
+        public LijstHasCadeau getCurrentLijstID()
         {
             return _currentLijstID;
         }

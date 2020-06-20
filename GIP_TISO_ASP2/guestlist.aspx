@@ -9,6 +9,8 @@
     </div>
     <br />
     <br />
-    <div style="text-align:center"><asp:Button ID="Button1" runat="server" Text="return" OnClick="Button1_Click" />
+    <div style="text-align:center"><asp:Button ID="btnBought" runat="server" Text="Gekocht" width="100px" OnClick="btnBought_Click"/>
+
+    <div style="text-align:center"><asp:Button ID="Button1" runat="server" Text="return" OnClick="Button1_Click" Width="100px" />
 </asp:Content>
 

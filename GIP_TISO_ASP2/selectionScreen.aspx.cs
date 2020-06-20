@@ -50,8 +50,8 @@ namespace GIP_TISO_ASP2
         protected void lbxSelectionLists_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Lijst> ListsActiveUser = _controller.getCadeausFromGebruiker();
+            LijstHasCadeau item = _controller.getLijstFromID(ListsActiveUser[lbxSelectionLists.SelectedIndex].ID);
 
-            Lijst item = _controller.getLijstFromID(ListsActiveUser[lbxSelectionLists.SelectedIndex].ID);
             _controller.setCurrentLijstID(item);
             Response.Redirect("ownList.aspx");
         }

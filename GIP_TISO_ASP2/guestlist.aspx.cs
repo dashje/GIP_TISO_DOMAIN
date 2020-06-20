@@ -32,8 +32,12 @@ namespace GIP_TISO_ASP2
             }
             Lijst oldLijst = _controller.getCurrentLijst();
             lblInformatie.Text = "Je zit in de lijst: " + oldLijst.Name;
-
-            lbxWishlist.DataSource = _controller.getCadeausFromCode(oldLijst.ID);
+            List<string> hulpLijst = new List<string>();
+            foreach(Cadeau item in _controller.getCadeausFromCode(oldLijst.ID))
+            {
+                hulpLijst.Add(item.ToString(2));
+            }
+            lbxWishlist.DataSource = hulpLijst;
             lbxWishlist.DataBind();
            
             
@@ -43,6 +47,11 @@ namespace GIP_TISO_ASP2
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("loginscreen.aspx");
+        }
+
+        protected void btnBought_Click(object sender, EventArgs e)
+        {
+            _controller.changeStatus(lbxWishlist.SelectedIndex,"Ja");
         }
     }
 }

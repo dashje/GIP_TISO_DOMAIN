@@ -36,5 +36,14 @@ namespace GIP_TISO_DOMAIN.Business
             }
             return returnLijst;        
         }
+        public static LijstHasCadeau getLijstFromID(int ID)
+        {
+            foreach (LijstHasCadeau LHCLijst in _lhcList)
+            {
+                if (LHCLijst.FK_Lijst == ID)
+                { return LHCLijst; }
+            }
+            return null;
+        }
     }
 }

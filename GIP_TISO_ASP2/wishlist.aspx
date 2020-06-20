@@ -10,8 +10,8 @@
         <br />
 
         <asp:ListBox ID="lbxAllCadeaus" runat="server" Height="193px" Width="380px"></asp:ListBox>
-        <asp:Button ID="BtnFromMyList" runat="server" Text="<" OnClick="BtnFromMyList_Click" />
-        <asp:Button ID="BtnToMyList" runat="server" Text=">" OnClick="BtnToMyList_Click" />
+        <asp:Button ID="BtnFromMyList" runat="server" Text="<" OnClick="BtnFromMyList_Click" Visible="false" />
+        <asp:Button ID="BtnToMyList" runat="server" Text=">" OnClick="BtnToMyList_Click" visible="false"/>
         <asp:ListBox ID="LbxCurrentList" runat="server" Height="193px" Width="380px"></asp:ListBox>
     <br />
     <asp:TextBox ID="txtName" runat="server" Text="Name"></asp:TextBox>
@@ -29,7 +29,7 @@
         <asp:Button ID="btnReturn" runat="server" Text="Return" BackColor="#1A1A1D" BorderColor="forestgreen" ForeColor="white" OnClick="btnReturn_Click" />
     <br />
 
-        <asp:Label ID="lblCode" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblCode" runat="server" Font-Size="XX-Large"></asp:Label>
     <br />
         <br />
 

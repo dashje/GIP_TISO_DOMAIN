@@ -69,6 +69,8 @@ namespace GIP_TISO_ASP2
         {
             btnAdd.Visible = true;
             BtnCreateList.Visible = false;
+            BtnToMyList.Visible = true;
+            BtnFromMyList.Visible = true;
             Lijst lijst = _controller.CreateList(txtNameList.Text);
             lblCode.Text = lijst.Code;
             //De lijst is nodig maar ik heb hem hier niet nodig.
